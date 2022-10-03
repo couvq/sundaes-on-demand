@@ -1,4 +1,5 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
 import App from "./App";
 
 describe("tests for App component", () => {
@@ -16,8 +17,12 @@ describe("tests for App component", () => {
     );
   });
   test("when App is rendered, fakeFetch is called once", async () => {
-    render(<App />);
-
+    await act(() => render(<App />));
     expect(fetch).toHaveBeenCalledTimes(1);
   });
+  test("SuggestedProducts component renders in DOM", () => {
+    const { getByRole } = render(<App />)
+    
+    expect(getByRole('suggested-products')).toBeInTheDocument();
+  })
 });

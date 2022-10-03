@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState, useEffect } from "react";
+import { Box, Typography } from "@mui/material";
+import SuggestedProducts from "./components/SuggestedProducts";
 
 const fakeFetch = async () => {
   try {
@@ -25,8 +27,10 @@ function App() {
 
   return (
     <>
-      <p data-testid='userId'>{data.userId}</p>
-      <p data-testid='title'>{data.title}</p>
+     <Box>
+       <Typography>Suggested Products for you...</Typography>
+       <SuggestedProducts />
+     </Box>
     </>
   );
 }
